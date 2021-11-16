@@ -4,6 +4,12 @@ using System.Linq;
 
 namespace OKTV2020
 {
+    class Cell
+    {
+        public int X { get; set; } = 0;
+        public int Y { get; set; } = 0;
+        public bool HasItem { get; set; } = false;
+    }
     class Program
     {
         static void TaskOne()
@@ -134,6 +140,61 @@ namespace OKTV2020
             string[] firstLineStringArray = Console.ReadLine().Split(" ");
             int N = int.Parse(firstLineStringArray[0]);
             int Q = int.Parse(firstLineStringArray[1]);
+            int K = int.Parse(firstLineStringArray[2]);
+           
+            List<List<Cell>> table = new();
+            List<(int X, int Y)> items = new();
+
+            for (int i = 0; i < K; i++) {
+                string[] lineStringArray = Console.ReadLine().Split(" ");
+                int X = int.Parse(lineStringArray[1]) - 1;
+                int Y = int.Parse(lineStringArray[0]) - 1;
+
+                items.Add((X, Y));
+            }
+
+            for(int y = 0; y < N; y++)
+            {
+                List<Cell> row = new();
+                for(int x = 0; x < Q; x++)
+                {
+                    Cell cell = new();
+                    cell.X = x;
+                    cell.Y = y;
+                    row.Add(cell);
+                }
+                table.Add(row);
+            }
+
+            foreach((int X, int Y) in items)
+            {
+                table[Y][X].HasItem = true;
+            }
+
+            /*foreach(List<Cell> row in table)
+            {
+                foreach(Cell cell in row)
+                {
+                    if(cell.HasItem)
+                    {
+                        Console.Write("X");
+                    } else
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                Console.WriteLine("");
+            }*/
+
+            List<(int startX, int endX, int Y)> Lshapes = new();
+
+            for (int y = 0; y < N; y++)
+            {
+                for (int x = 0; x < Q; x++)
+                {
+                    
+                }
+            }
         }
 
         static void Main(string[] args)
