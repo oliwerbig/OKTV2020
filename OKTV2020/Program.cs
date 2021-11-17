@@ -171,30 +171,30 @@ namespace OKTV2020
                 table[Y][X].HasItem = true;
             }
 
-            /*foreach(List<Cell> row in table)
-            {
-                foreach(Cell cell in row)
-                {
-                    if(cell.HasItem)
-                    {
-                        Console.Write("X");
-                    } else
-                    {
-                        Console.Write(" ");
-                    }
-                }
-                Console.WriteLine("");
-            }*/
-
-            List<(int startX, int endX, int Y)> Lshapes = new();
+            int numOfNeccesaryRobots = new();
 
             for (int y = 0; y < N; y++)
             {
+                int numOfItemsInRow = 0;
                 for (int x = 0; x < Q; x++)
                 {
-                    
+                    if(table[y][x].HasItem)
+                    {
+                        numOfItemsInRow += 1;
+                    }
+                }
+                if(numOfItemsInRow >= 2)
+                {
+                    numOfNeccesaryRobots += 1;
                 }
             }
+
+            Console.WriteLine(numOfNeccesaryRobots);
+        }
+
+        static void TaskFive()
+        {
+
         }
 
         static void Main(string[] args)
@@ -202,7 +202,8 @@ namespace OKTV2020
             //TaskOne();
             //TaskTwo();
             //TaskThree();
-            TaskFour();
+            //TaskFour();
+            TaskFive();
         }
     }
 }
